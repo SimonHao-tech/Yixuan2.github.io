@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yixuan · 简洁一页式网站</title>
+  <meta name="description" content="一个可直接打开与部署的一页式网站模板，适合个人主页、顾问服务与作品展示。" />
+  <style>
+    :root{
+      --bg:#0b0f14;--card:#121a22;--text:#e8eef5;--muted:#a7b4c2;--accent:#3aa0ff;--accent2:#7ae1c3;
+      --radius:16px;--shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"PingFang SC","Microsoft YaHei",Arial;color:var(--text);background:linear-gradient(180deg,#0b0f14,#0a1017 40%,#0b121a)}
+    a{color:var(--accent);text-decoration:none}
+    .container{width:min(1100px,92%);margin:0 auto}
+    header{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);background:rgba(11,15,20,.6);border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .logo{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.5px}
+    .logo-mark{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:var(--shadow)}
+    .nav-links{display:flex;gap:18px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);color:var(--text);transition:.2s ease}
+    .btn:hover{transform:translateY(-1px);border-color:rgba(255,255,255,.16)}
+    .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#001018;border:none;font-weight:700}
+    .hero{padding:80px 0 40px;text-align:center}
+    .hero h1{font-size:clamp(28px,5vw,52px);line-height:1.1;margin:0 0 14px}
+    .hero p{color:var(--muted);font-size:clamp(14px,2.4vw,18px);margin:0 auto 22px;max-width:760px}
+    .hero .cta{display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:6px}
+    .tagline{display:inline-flex;gap:8px;align-items:center;padding:8px 12px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);border-radius:999px;color:var(--muted);font-size:12px;margin-bottom:14px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+    .card h3{margin:6px 0 6px;font-size:18px}
+    .card p{margin:0;color:var(--muted);font-size:14px}
+    section{padding:40px 0}
+    .section-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+    .section-title h2{font-size:clamp(22px,4vw,32px);margin:0}
+    .pill{font-size:12px;color:var(--muted);border:1px solid rgba(255,255,255,.08);padding:6px 10px;border-radius:999px}
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .feature{padding:18px;border-radius:var(--radius);border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.02)}
+    .feature h4{margin:8px 0 8px}
+    .feature small{color:var(--muted)}
+    .work{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .shot{position:relative;aspect-ratio:16/10;border-radius:var(--radius);overflow:hidden;border:1px solid rgba(255,255,255,.08);background:
+      radial-gradient(60% 80% at 20% 0%, rgba(58,160,255,.25), transparent 60%),
+      radial-gradient(60% 80% at 100% 100%, rgba(122,225,195,.25), transparent 60%),
+      linear-gradient(180deg,#0f1620,#0b121a)}
+    .shot::after{content:"预留图片区域";position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);letter-spacing:2px}
+    .contact{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
+    form{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:18px}
+    label{font-size:13px;color:var(--muted)}
+    input,textarea{width:100%;margin-top:6px;margin-bottom:12px;padding:12px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);color:var(--text);outline:none}
+    input:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(58,160,255,.35)}
+    footer{padding:26px 0 60px;color:var(--muted);text-align:center}
+    .badges{display:flex;gap:10px;flex-wrap:wrap}
+    .kbd{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);border-radius:8px;padding:6px 10px;font-size:12px;color:var(--muted)}
+    @media (max-width:980px){.features,.work{grid-template-columns:1fr 1fr}.grid{grid-template-columns:1fr 1fr 1fr}.contact{grid-template-columns:1fr}}
+    @media (max-width:720px){.features,.work,.grid{grid-template-columns:1fr}.nav-links{display:none}.hero{padding-top:56px}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo"><div class="logo-mark" aria-hidden="true"></div><span>Yixuan</span></div>
+      <nav class="nav-links">
+        <a href="#about">关于</a>
+        <a href="#services">服务</a>
+        <a href="#work">案例</a>
+        <a href="#contact">联系</a>
+        <a class="btn primary" href="#contact">获取报价</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero" id="home">
+      <div class="tagline">🚀 即刻可用 · 单文件 · 可直接部署（GitHub Pages / Netlify / Vercel）</div>
+      <h1>把你的专业，装进一个干净利落的主页</h1>
+      <p>这是一份轻量又体面的一页式网站模板。适合个人主页、顾问服务、项目展示或小团队官网。只需一个 HTML 文件：下载即可打开，拖拽即可上线。</p>
+      <div class="cta">
+        <a class="btn primary" href="#contact">开始合作</a>
+        <a class="btn" href="#work">查看案例</a>
+      </div>
+      <div style="margin-top:18px;display:flex;gap:10px;justify-content:center" class="badges">
+        <div class="kbd">响应式 Responsive</div>
+        <div class="kbd">纯前端 Static</div>
+        <div class="kbd">可改色 Theming</div>
+        <div class="kbd">平滑滚动 Smooth Scroll</div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="section-title">
+        <h2>关于我 / 我们</h2>
+        <span class="pill">Introduce</span>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <h3>定位</h3>
+          <p>一句话价值主张：为金融与建设行业提供 <strong>合规与风险控制</strong> 顾问服务。</p>
+        </div>
+        <div class="card">
+          <h3>优势</h3>
+          <p>跨银行运营风险与现场安全经验 · 可交付报告与仪表盘 · 快速响应 · 中英双语。</p>
+        </div>
+        <div class="card">
+          <h3>方法</h3>
+          <p>调研 → 诊断 → 方案 → 落地 → 复盘，强调闭环与可验证结果。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="section-title">
+        <h2>服务与能力</h2>
+        <span class="pill">Services</span>
+      </div>
+      <div class="features">
+        <div class="feature">
+          <h4>运营风险（ORM）</h4>
+          <small>RCSA、KRI 体系、事件复盘、整改跟踪、仪表盘与报告。</small>
+        </div>
+        <div class="feature">
+          <h4>合规与审查</h4>
+          <small>流程与控制评估、政策对标、NPA/变更评审与上线前检查。</small>
+        </div>
+        <div class="feature">
+          <h4>现场与施工安全</h4>
+          <small>CDM 2015 / BSA PD、RAMS 审核、现场巡检与闭环。</small>
+        </div>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="section-title">
+        <h2>精选案例</h2>
+        <span class="pill">Portfolio</span>
+      </div>
+      <div class="work">
+        <div class="shot"></div>
+        <div class="shot"></div>
+        <div class="shot"></div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-title">
+        <h2>联系与合作</h2>
+        <span class="pill">Contact</span>
+      </div>
+      <div class="contact">
+        <form id="contactForm" onsubmit="handleSubmit(event)">
+          <label>你的称呼</label>
+          <input required name="name" placeholder="张三 / ACIO / PM" />
+          <label>邮箱</label>
+          <input required type="email" name="email" placeholder="you@company.com" />
+          <label>想聊的项目</label>
+          <textarea name="message" rows="5" placeholder="简单说下你的需求与时间节点…"></textarea>
+          <button class="btn primary" style="width:100%">发送</button>
+          <p id="msg" style="margin:10px 0 0; color: var(--muted);"></p>
+        </form>
+        <div class="card">
+          <h3>也可以直接联系</h3>
+          <p style="color:var(--muted);">邮箱：<a href="mailto:hello@example.com">hello@example.com</a><br/>LinkedIn / 微信：your-id</p>
+          <hr style="border-color: rgba(255,255,255,.08); margin:14px 0;"/>
+          <p style="color:var(--muted); font-size:14px;">提示：此表单默认以 <strong>mailto</strong> 方式打开你的本地邮箱客户端，无需服务器。后续可替换为 Formspree / Getform / Notion Forms。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container"><small>© <span id="y"></span> Yixuan · All rights reserved.</small></div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id=a.getAttribute('href');
+        if(id.length>1){e.preventDefault();document.querySelector(id)?.scrollIntoView({behavior:'smooth',block:'start'});}
+      });
+    });
+    document.getElementById('y').textContent=new Date().getFullYear();
+    function handleSubmit(e){
+      e.preventDefault();
+      const f=e.target; const data=Object.fromEntries(new FormData(f).entries());
+      const subject=encodeURIComponent('网站合作咨询 - '+(data.name||'未署名'));
+      const body=encodeURIComponent(`称呼: ${data.name||''}\n邮箱: ${data.email||''}\n\n项目:\n${data.message||''}`);
+      const mailto=`mailto:hello@example.com?subject=${subject}&body=${body}`;
+      document.getElementById('msg').textContent='正在打开你的默认邮箱客户端……';
+      window.location.href=mailto;
+    }
+  </script>
+</body>
+</html>
